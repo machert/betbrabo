@@ -1,0 +1,244 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "APIs For Thrift Store",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/sessionExpired": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "operationId": "a2e13985153567bde080aca3d6d57474",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "operationId": "222b2625838e3c57e017987f73598fda",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Log the user out",
+                "operationId": "ad65cbbd4e9f201619eae184a5961a98",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/refresh": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Refresh a token.",
+                "operationId": "f6409cd8d794404a6410b0767432b0f4",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/bets/index": {
+            "get": {
+                "tags": [
+                    "Bets"
+                ],
+                "summary": "Display a listing of bets",
+                "operationId": "732fbf64023c78c3cf00139956d7124f",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "users_id": {
+                                            "type": "integer"
+                                        },
+                                        "date_start": {
+                                            "type": "string",
+                                            "format": "date"
+                                        },
+                                        "data_end": {
+                                            "type": "string",
+                                            "format": "date"
+                                        },
+                                        "data_execution": {
+                                            "type": "string",
+                                            "format": "date"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date"
+                                        },
+                                        "updated_at": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "id": 1,
+                                        "name": "dice",
+                                        "users_id": 2,
+                                        "date_start": "2023-08-23 00:00:00",
+                                        "data_end": null,
+                                        "data_execution": null,
+                                        "created_at": "2023-08-28T19:03:17.000000Z",
+                                        "updated_at": "2023-08-28T19:03:17.000000Z"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/bets/store": {
+            "post": {
+                "tags": [
+                    "Bets"
+                ],
+                "summary": "Store a newly created bet in storage",
+                "operationId": "6ae0b310824d400767783c60f2e7fdeb",
+                "requestBody": {
+                    "description": "JSON containing bet data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "users_id",
+                                    "date_start"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Bet Name"
+                                    },
+                                    "users_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "date_start": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2023-09-27"
+                                    },
+                                    "date_end": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2023-09-30"
+                                    },
+                                    "date_execution": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2023-10-05"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/bets/show": {
+            "get": {
+                "tags": [
+                    "Bets"
+                ],
+                "summary": "Display the specified bet",
+                "operationId": "e1c5e301939243a500e54e43060ad436",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/bets/update": {
+            "get": {
+                "tags": [
+                    "Bets"
+                ],
+                "summary": "Update the specified bet in storage",
+                "operationId": "e24ee558f26952aac59c5a449baf296d",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/bets/destroy": {
+            "get": {
+                "tags": [
+                    "Bets"
+                ],
+                "summary": "Remove the specified bet from storage",
+                "operationId": "8468ab52f071f951925965c99fe5464d",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "name": "bearerAuth",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
