@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api;
 use App\Http\Controllers\Api\HomeController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 //use Tymon\JWTAuth\Http\Middleware\Authenticate;
 

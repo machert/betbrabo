@@ -39,8 +39,7 @@ Projeto Laravel - API de apostas
 
 ##################################################
 
-Projeto VueJs | Tailwind css - ambiente web 
-
+# Projeto VueJs | Tailwind css - ambiente web 
 
 ## O que há no projeto
 - Teste unitário []
