@@ -37,3 +37,5 @@ Projeto Laravel - API de apostas
 - JWT token [x]
 - Grafana
 
+## Instalações
+composer require barryvdh/laravel-cors

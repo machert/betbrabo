@@ -54,6 +54,7 @@ Route::prefix('users-groups')->group(function(){
 
 Route::prefix('bets')->group(function(){
     Route::get('/', [Api\BetController::class, 'index'])->name('bets.all');
+    Route::get('/listByUsersId', [Api\BetController::class, 'listByUsersId'])->name('betsByUsersId.all');
     Route::get('/{id}', [Api\BetController::class, 'show'])->name('bets.findById');
     Route::post('/', [Api\BetController::class, "store"])->name('bets.post');
     Route::put('/{id}', [Api\BetController::class, "update"])->name('bets.put');

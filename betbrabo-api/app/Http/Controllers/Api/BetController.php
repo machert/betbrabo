@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Bet;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class BetController extends Controller
 {
@@ -82,6 +84,17 @@ class BetController extends Controller
     {
         try{
             return Bet::all();
+        }
+        catch(\Exception $e){
+            throw $e;//Exceptions/Handler.php
+        }
+    }
+    
+    public function listByUsersId(Request $request)
+    {
+        try{
+            $users_id = Auth::user()->id;
+            return Bet::where('users_id', $users_id)->get();
         }
         catch(\Exception $e){
             throw $e;//Exceptions/Handler.php

@@ -1,11 +1,5 @@
 <script setup>
-    import router from '@/routes'; 
     import {onMounted} from 'vue'
-    
-    const token = localStorage.getItem('token');
-    // if(!token){
-    //     router.push('/login')
-    // }
     
     onMounted(() => {
         console.log('Home')
@@ -14,7 +8,9 @@
 </script>
 
 <template>
-    <h1>Home page</h1>
+    <div class="flex w-full justify-center items-center">
+        <h1 class="flex text-2xl">Home page</h1>
+    </div>
 </template>
 
 <style scoped>

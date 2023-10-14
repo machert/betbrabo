@@ -92,6 +92,7 @@ class BetPrizeController extends Controller
     public function destroy(string $id)
     {
         try{
+            
             $betPrize = BetPrize::findOrFail($id);
             $betPrize->delete();
             return response(Response::HTTP_NO_CONTENT);

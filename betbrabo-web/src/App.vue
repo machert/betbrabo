@@ -1,34 +1,33 @@
 <script setup>
-  import { validateToken } from '@/services/validateToken'
-  import { onMounted } from 'vue'
-  import { RouterLink, RouterView} from 'vue-router'
+  import Header from './components/Header.vue'
+  import { onBeforeUpdate, ref } from 'vue'
+  import { RouterView} from 'vue-router'
+  import router from '@/routes'; 
+  import cookie from '@/services/cookie'
   
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    console.log('token destruido')
-  };
-  
-  onMounted(() => {
-    console.log('App')
+  const componentKey = ref(0);
+
+  onBeforeUpdate(() => {
+    if(!cookie.validateToken()){
+      router.push('/login')
+    }
+    componentKey.value += 1;
   })
 
 </script>
 
 <template>
-    <header v-if="validateToken()" key="header">
-    <!-- <header> -->
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/login" @click="handleLogout">LogOut</RouterLink>
-    </header>
-  
-    <main>
-        <RouterView :key="$route.fullPath" />
+  <div class="flex w-full h-screen">
+
+    <nav class="flex w-2/12 h-screen ">
+      <Header :key="componentKey"/>
+    </nav>
+
+    <main class="flex w-10/12 h-screen ">
+      <RouterView :key="$route.fullPath" />
     </main>
   
-    <footer>
-  
-    </footer>
-
+  </div>
 </template>
 
 <style scoped>

@@ -1,10 +1,16 @@
 import axios from 'axios'
+import cookie from './cookie'
 
 const http = axios.create({
-    baseURL: 'http://localhost:80/api/',
+    baseURL: 'http://localhost:8000/api/',
 })
 
-// instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-http.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
+http.interceptors.request.use((config) => {
+    const token = cookie.get('token');
+    if (token) {
+        config.headers['Authorization'] = `Bearer ${token}`;
+    }
+    return config;
+});
 
 export default http
