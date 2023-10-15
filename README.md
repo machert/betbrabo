@@ -16,8 +16,8 @@ Projeto Laravel - API de apostas
 - Autenticação jwt token email/senha: admin@gmail.com/1234
 
 ## O que há no projeto
-- Teste unitário []
-- Teste de integração []
+- Teste unitário [x]
+- Teste de integração [x]
 - API Restful [x]
 - Eloquent para persistência na api [x]
 - Autenticação JWT token [x]
@@ -30,12 +30,12 @@ Projeto Laravel - API de apostas
 ## Tecnologias
 - Laravel [x]
 - MySQL [x]
-- Redis
-- Laravel queue
-- Nginx
+- Redis []
+- Laravel queue []
+- Nginx []
 - Docker [x]
 - JWT token [x]
-- Grafana
+- Grafana []
 
 ##################################################
 
@@ -44,12 +44,12 @@ Projeto Laravel - API de apostas
 ## O que há no projeto
 - Teste unitário []
 - Teste de integração []
-- Consumo da API Restful []
+- Consumo da API Restful [x]
 - VueJs [x]
 - TailWind css [x]
 
 ## Tecnologias
 - VueJs [x]
 - Tailwind CSS [x]
-- HTML
+- HTML [x]
 
