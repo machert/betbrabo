@@ -3,13 +3,10 @@
 namespace Tests\Unit;
 
 use App\Models\Group;
-use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\TestCase;
 
 class GroupTest extends TestCase
 {
-    use RefreshDatabase; // Para recriar o banco de dados a cada teste
 
     public function test_check_new_group(): void
     {
