@@ -221,7 +221,7 @@
                 "operationId": "8468ab52f071f951925965c99fe5464d",
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "NO_CONTENT",
                         "content": {
                             "application/json": {}
                         }

@@ -43,7 +43,7 @@ class BetPrizeController extends Controller
 
             $saved = $betPrize->save();
             if($saved){
-                return response(["message" => "Save successful"], Response::HTTP_CREATED);
+                return response(["message" => "Save successful"], ["status" => Response::HTTP_CREATED]);
             }else{
                 throw new BadRequestException("Error on save new bet");
             }
@@ -82,7 +82,7 @@ class BetPrizeController extends Controller
 
             $betPrize->save();
     
-            return response(["message" => "Update successful"], Response::HTTP_OK);
+            return response(["message" => "Update successful"], ["status" => Response::HTTP_OK]);
         }
         catch(\Exception $e){
             throw $e;//Exceptions/Handler.php
@@ -95,7 +95,7 @@ class BetPrizeController extends Controller
             
             $betPrize = BetPrize::findOrFail($id);
             $betPrize->delete();
-            return response(Response::HTTP_NO_CONTENT);
+            return response(["message" => "Delete successful"], ["status" => Response::HTTP_NO_CONTENT]);
         }
         catch(\Exception $e){
             throw $e;//Exceptions/Handler.php

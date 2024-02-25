@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -30,7 +31,7 @@ class AuthController extends Controller
      */
     public function sessionExpired()
     {
-        return response()->json(['error' => 'session expired'], 401);
+        return response()->json(['error' => 'session expired'], ["status" => Response::HTTP_UNAUTHORIZED]);
     }
 
     /**
@@ -43,21 +44,27 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
+        try{
 
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-        ]);
-
-        $credentials = $request->only('email', 'password');
-        $token = Auth::attempt($credentials);
-        if (!$token ) {
+            $request->validate([
+                'email' => 'required|string|email',
+                'password' => 'required|string',
+            ]);
+    
+            $credentials = $request->only('email', 'password');
+            $token = Auth::attempt($credentials);
+            if (!$token ) {
+                return response()->json([
+                    'message' => 'Unauthorized',
+                ], ["status" => Response::HTTP_UNAUTHORIZED]);
+            }
+            
+            return $this->respondWithToken($token);
+        }catch(\Exception $e){
             return response()->json([
-                'message' => 'Unauthorized',
-            ], 401);
+                'message' =>  $e,
+            ], ["status" => Response::HTTP_UNAUTHORIZED]);
         }
-        
-        return $this->respondWithToken($token);
     }
 
     public function register(Request $request)
@@ -76,7 +83,8 @@ class AuthController extends Controller
 
         return response()->json([
             'message' => 'User created successfully',
-            'user' => $user
+            'user' => $user,
+            'status' => Response::HTTP_CREATED
         ]);
     }
 
@@ -110,6 +118,7 @@ class AuthController extends Controller
         Auth::logout();
         return response()->json([
             'message' => 'Successfully logged out',
+            'status' => Response::HTTP_OK
         ]);
     }
 

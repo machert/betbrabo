@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api;
 use App\Http\Controllers\Api\HomeController;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 //use Tymon\JWTAuth\Http\Middleware\Authenticate;
 
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::fallback(function(){
     return response()->json([
-        'message' => 'Page Not Found. If error persists, contact machert@github.com'], 404);
+        'message' => 'Page Not Found. If error persists, contact machert@github.com'], ["status" => Response::HTTP_NOT_FOUND]);
 });
 
 Route::prefix('groups')->group(function(){

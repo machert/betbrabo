@@ -25,16 +25,7 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 class UserFeatureTest extends TestCase
 {
     use RefreshDatabase;
-    /**
-     * A basic feature test example.
-      */
-    // public function test_example(): void
-    // {
-    //     $response = $this->get('/');
-
-    //     $response->assertStatus(200);
-    // }
-
+    
     public function test_user_should_be_able_to_view_users()
     {
         $this->withoutExceptionHandling();
@@ -62,12 +53,12 @@ class UserFeatureTest extends TestCase
         $this->assertCount(2, User::all());
     }
 
-    public function actingAs(UserContract $user, $guard = null)
-    {
-        $token = JWTAuth::fromUser($user);
-        $this->withHeader('Authorization',"Bearer {$token}");
-        parent::actingAs($user);
-        return $this;
-    }
+    // public function actingAs(UserContract $user, $guard = null)
+    // {
+    //     $token = JWTAuth::fromUser($user);
+    //     $this->withHeader('Authorization',"Bearer {$token}");
+    //     parent::actingAs($user);
+    //     return $this;
+    // }
 
 }
