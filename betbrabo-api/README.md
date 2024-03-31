@@ -5,7 +5,7 @@ Projeto Laravel - API de apostas
 - PHP
 - Composer
 - Docker
-- Insomnia, postman ou similar
+- Insomnia (Há um .json para importar na raiz do projeto), postman ou similar
 
 ## Como configurar o projeto
 - Baixe o repositorio ou faça um clone do projeto na sua maquina
@@ -31,12 +31,8 @@ Projeto Laravel - API de apostas
 ## Tecnologias
 - Laravel [x]
 - MySQL [x]
-- Redis []
-- Laravel queue []
-- Nginx []
 - Docker [x]
 - JWT token [x]
-- Grafana []
 
 ## Instalações
 composer require barryvdh/laravel-cors

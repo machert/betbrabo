@@ -8,26 +8,31 @@
     const password = ref('')
 
     async function Logar(){
-        cookie.reset()
-        const response = await login (email.value, password.value)
-        if(response){
-            const token = response.data.authorization.token
-            const name = response.data.user.name
-            cookie.set('token', token)
-            cookie.set('name', name)
-            router.push('/home')
-        }else{
-            console.log('erro', response)
-            // alert(response)
+        try{
+            cookie.reset() 
+            const response = await login (email.value, password.value)
+            if(response){
+                const token = response.data.authorization.token
+                const name = response.data.user.name
+                cookie.set('token', token)
+                cookie.set('name', name)
+                router.push('/home')
+            }else{
+                alert(response)
+                // alert(response)
+            }
+        }catch(error){
+            alert(error);
         }
+        
     }
 
 </script>
 
 <template>
     <div class="flex w-full flex-col gap-2 justify-center items-center h-screen ">
-        <div class="flex flex-col bg-gray-200 rounded p-4 ">
-            <h1 class="flex text-2xl" >BetBrabo Login</h1>
+        <div class="flex flex-col bg-white rounded p-4 ">
+            <h1 class="flex text-2xl text-center" >BetBrabo Login</h1>
             <form action="" @submit.prevent="Logar" class="flex flex-col gap-2 m-4">
                 <div class="flex-col">
                     <label for="email" class="flex">Email</label>

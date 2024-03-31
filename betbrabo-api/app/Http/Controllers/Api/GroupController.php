@@ -46,7 +46,7 @@ class GroupController extends Controller
             $group->name = $request->name;
             $saved = $group->save();
             if($saved){
-                return response(["message" => "Save successful"], ["status" => Response::HTTP_CREATED]);
+                return response(["message" => "Save successful"], Response::HTTP_CREATED);
             }else{
                 throw new BadRequestException("Error on save new group");
             }
@@ -85,7 +85,7 @@ class GroupController extends Controller
     
             $group->save();
 
-            return response(["message" => "Update successful"], ["status" => Response::HTTP_OK]);
+            return response(["message" => "Update successful"]);
         }
         catch(\Exception $e){
             throw $e;//Exceptions/Handler.php
@@ -100,7 +100,7 @@ class GroupController extends Controller
         try{
             $group = Group::findOrFail($id);
             $group->delete();
-            return response(["message" => "Delete successful"], ["status" => Response::HTTP_NO_CONTENT]);
+            return response(["message" => "Delete successful"], Response::HTTP_NO_CONTENT);
         }
         catch(\Exception $e){
             throw $e;//Exceptions/Handler.php

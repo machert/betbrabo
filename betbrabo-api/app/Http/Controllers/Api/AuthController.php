@@ -18,7 +18,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login','sessionExpired']]);
+        $this->middleware('auth:api', ['except' => ['login','sessionExpired']]);//exceções
     }
     
     /**
@@ -31,7 +31,7 @@ class AuthController extends Controller
      */
     public function sessionExpired()
     {
-        return response()->json(['error' => 'session expired'], ["status" => Response::HTTP_UNAUTHORIZED]);
+        return response()->json(['error' => 'session expired'], Response::HTTP_UNAUTHORIZED);
     }
 
     /**
@@ -56,14 +56,14 @@ class AuthController extends Controller
             if (!$token ) {
                 return response()->json([
                     'message' => 'Unauthorized',
-                ], ["status" => Response::HTTP_UNAUTHORIZED]);
+                ], Response::HTTP_UNAUTHORIZED);
             }
             
             return $this->respondWithToken($token);
         }catch(\Exception $e){
             return response()->json([
                 'message' =>  $e,
-            ], ["status" => Response::HTTP_UNAUTHORIZED]);
+            ], Response::HTTP_UNAUTHORIZED);
         }
     }
 
@@ -84,8 +84,9 @@ class AuthController extends Controller
         return response()->json([
             'message' => 'User created successfully',
             'user' => $user,
-            'status' => Response::HTTP_CREATED
-        ]);
+            ],
+            Response::HTTP_CREATED
+        );
     }
 
 
@@ -116,10 +117,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return response()->json([
-            'message' => 'Successfully logged out',
-            'status' => Response::HTTP_OK
-        ]);
+        return response()->json(['message' => 'Successfully logged out']);
     }
 
     /**
